@@ -1,3 +1,7 @@
+envVars:
+  - key: NODE_VERSION
+    value: 18.17.1
+
 services:
   - type: web
     name: echo-gpt-ghl-handler
