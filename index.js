@@ -26,11 +26,10 @@ app.post('/gpt-ghl-handler', async (req, res) => {
     }
 
     res.json({ success: true, result });
-  }   } catch (err) {
+  } catch (err) {
     console.error('🔥 ERROR in /gpt-ghl-handler:', err.message);
-    
+
     if (err.response) {
-      // Log details if error came from axios (GHL API)
       console.error('GHL API Error Response:', {
         status: err.response.status,
         data: err.response.data,
@@ -41,4 +40,9 @@ app.post('/gpt-ghl-handler', async (req, res) => {
 
     res.status(500).json({ error: err.message || 'Internal Server Error' });
   }
+});
+
+app.listen(process.env.PORT, () =>
+  console.log(`Server running on http://localhost:${process.env.PORT}`)
+);
 
